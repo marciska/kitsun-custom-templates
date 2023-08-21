@@ -1,0 +1,450 @@
+:root {
+    /* Variables from Kitsun */
+    --primary: #2C97DE;
+    --primaryTrans: rgba(44, 151, 222, 0.15);
+    --dark-text: #353D44;
+    --white-text: #C2C8CF;
+    --background: #f3f6f7;
+    --alt: #8B939C;
+    --beginner: #2C97DE;
+    --dark: #353D44;
+    --light: #EAF0F4;
+    --cardshadow: 0 0.5rem 0.75rem -0.25rem rgba(39, 48, 54, 0.05);
+    --input-bg: #fff;
+
+    /* My variables */
+    --primary-jp: #2C97DE;
+    --primary-en: #9577DE;
+    --highlight: #2C97DE;
+    /*#EFC662*/
+    --prompt-alt: black;
+    --postag: #EFC662;
+    --postag-bg: rgba(251, 215, 124, 0.17);
+    --hint: gray;
+    --hint-bg: rgba(128, 128, 128, 0.093);
+    --infobox: rgb(109, 109, 109) solid;
+    --infoboxshadow: 0 0.5rem 0.75rem -0.25rem rgba(39, 48, 54, 0.3);
+    --infobox-label: #798895b9;
+}
+
+body {
+    background: var(--background);
+}
+
+.full_wrap {
+    overflow: auto;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Vocab */
+
+.main_wrap {
+    margin-top: 60px;
+    margin-bottom: 30px;
+    padding: 0px 40px;
+    text-align: center;
+    font-size: 6vmin;
+}
+
+.vocab_wrap p {
+    color: var(--primary-jp);
+    line-height: 1em;
+    margin: 0;
+}
+
+.vocab_wrap .hint {
+    margin-bottom: 20px;
+    border-radius: 7px;
+    font-size: 0.5em;
+    background: var(--hint-bg);
+    display: inline-block;
+    padding: 6px 10px;
+    color: var(--hint);
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+
+.vocab_wrap .vocab_jp {
+    font-size: 1.6em;
+    color: var(--primary-jp);
+}
+
+.vocab_wrap .kana {
+    visibility: hidden;
+    font-size: 0.7em;
+}
+
+.vocab_wrap:hover .kana {
+    visibility: visible;
+}
+
+.vocab_wrap .vocab_en {
+    font-size: 1.3em;
+    color: var(--primary-en);
+}
+
+.vocab_wrap .vocab_en_alt {
+    font-size: 0.8em;
+}
+
+/* Part of Speech */
+
+.part_of_speech {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.5em;
+}
+
+.tag {
+    background: var(--postag-bg);
+    color: var(--postag);
+    border-radius: 7px;
+    margin: 0 5px;
+    padding: 6px 10px;
+}
+
+/* Input Box */
+
+.input_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+.input_wrapper .prompt_color {
+    height: 30px;
+    width: 100%;
+    background: var(--primary);
+    border-radius: 2px 2px 0 0;
+}
+
+.prompt_color.prompt_meaning {
+    background: var(--primary-jp);
+}
+
+.prompt_color.prompt_vocab {
+    background: var(--primary-en);
+}
+
+.input_wrapper .prompt_color.prompt_meaning::before {
+    content: "Meaning";
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color: var(--prompt-alt);
+}
+
+.input_wrapper .prompt_color.prompt_vocab::before {
+    content: "Reading";
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color: var(--prompt-alt);
+}
+
+#typeans_wrapper {
+    box-shadow: var(--cardshadow);
+    height: 50px;
+    width: 100%;
+    position: relative;
+
+    #typeans {
+        background: var(--input-bg);
+        color: var(--white-text);
+        border: none !important;
+        border-radius: 0 0 10px 10px;
+        height: 50px;
+        width: 100%;
+        padding: 0;
+        text-align: center;
+        font-size: 1.2rem;
+
+    }
+
+    #typeans:focus {
+        outline: none;
+    }
+
+    #typeans::placeholder {
+        color: var(--white-text);
+    }
+
+    #nextans {
+        height: 51px;
+        line-height: 51px;
+        right: 0px;
+    }
+
+    i {
+        height: 51px;
+        line-height: 51px;
+        color: var(--white-text) !important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .input_wrapper {
+        width: 80%;
+    }
+}
+
+/* Audio */
+
+.audio_wrap {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.audio_wrapper {
+    width: unset;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: var(--light);
+}
+
+.audio_wrapper::after {
+    content: 'Play Audio';
+    font-size: 1.2rem;
+    width: 100%;
+    color: var(--dark);
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Info Section */
+
+.info_wrapper {
+    animation: fadeInUp 0.5s ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    /* border: black solid; */
+}
+
+@media only screen and (max-width: 800px) {
+    .info_wrapper {
+        width: 90%;
+    }
+}
+
+.info_wrapper .info {
+    border: var(--infobox);
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px 10px;
+    width: 100%;
+    background: var(--input-bg);
+    box-shadow: var(--infoboxshadow);
+    position: relative;
+
+}
+
+.highlight {
+    font-size: 1.3rem;
+    color: var(--highlight);
+}
+
+.info_wrapper .info p {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+#info_meanings {
+    font-size: 1.0rem;
+    width: 49%;
+}
+
+#info_meanings::before {
+    content: "Meaning";
+    font-size: 1.2rem;
+    color: var(--infobox-label);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+#info_readings {
+    font-size: 1.0rem;
+    width: 49%;
+}
+
+#info_readings::before {
+    content: "Reading";
+    font-size: 1.2rem;
+    color: var(--infobox-label);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+#info_readings span {
+    position: absolute;
+    right: 10px;
+    font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 700px) {
+    #info_meanings {
+        width: 100%;
+    }
+
+    #info_readings {
+        width: 100%;
+    }
+}
+
+#info_sentence {
+    font-size: 1.2rem;
+    position: relative;
+}
+
+#info_sentence::before {
+    content: "Sentence";
+    font-size: 1.2rem;
+    color: var(--infobox-label);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+#info_sentence p {
+    line-height: 1.5em;
+}
+
+#info_sentence a {
+    position: absolute;
+    color: var(--highlight);
+    padding-left: 3px;
+
+}
+
+#info_sentence a:link {
+    text-decoration: none;
+}
+
+#info_sentence a:visited {
+    text-decoration: none;
+}
+
+#info_sentence a:hover {
+    text-decoration: none;
+}
+
+#info_sentence a:active {
+    text-decoration: none;
+}
+
+#info_notes {
+    font-size: 1rem;
+
+}
+
+#info_notes::before {
+    content: "Notes";
+    font-size: 1.2rem;
+    width: 100%;
+    color: var(--infobox-label);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+#info_notes div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.notes p {
+    margin-bottom: 0;
+}
+
+#info_image {
+    width: 30%;
+}
+
+#info_cardtags {
+    border: unset;
+    background-color: unset;
+    box-shadow: unset;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 1.0em;
+}
+
+/* Utility */
+
+.hasBlur .blur {
+    text-shadow: 0px 0px 10px var(--dark-text);
+    color: transparent !important;
+    cursor: pointer;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+rt {
+    visibility: hidden;
+    color: var(--intermediate);
+    user-select: none;
+}
+
+.furi:hover {
+    rt {
+        visibility: visible;
+    }
+}
+
+
+
+/* Stuff coming from Kitsun */
+
+.isax-arrow-right-1:before {
+    content: "\E934";
+}
+
+.isax-link-1:before {
+    content: "\EAD8"
+}
+
+#nextans {
+    float: left;
+    position: absolute;
+    top: 0px;
+    z-index: 300;
+    width: 70px;
+    right: 10px;
+    margin-left: -70px;
+    height: 81px;
+    line-height: 81px;
+    cursor: pointer;
+    color: gray;
+    display: table;
+}

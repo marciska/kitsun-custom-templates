@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitsun Template</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <div class="full_wrap">
+        <div class="main_wrap">
+            <div class="vocab_wrap">
+                {{#Hint Vocab}}
+                <div class="hint">{{Hint Vocab}}</div>
+                {{/Hint Vocab}}
+                <p class="vocab_en">{{first:Meanings}}</p>
+                <p class="vocab_en vocab_en_alt">{{rest:Meanings}}</p>
+            </div>
+            <div class="part_of_speech">
+                {{#Part of Speech}}{{tags:Part of Speech}}{{/Part of Speech}}
+                <!-- <div class="tag">Test</div> -->
+                <!-- <div class="tag">Test2</div> -->
+            </div>
+        </div>
+        <div class="input_wrapper">
+            <div class="prompt_color prompt_vocab"></div>
+            <!-- {{type-ja:Readings[答え]}} -->
+            <div id="typeans_wrapper">
+                <input class="input" id="typeans" placeholder="答え">
+                <div id="nextans"><i class="isax isax-arrow-right-1"></i></div>
+            </div>
+        </div>
+        <div class="audio_wrap blur">
+            {{Audio}}
+        </div>
+        <div class="info_wrapper">
+            <div class="info" id="info_readings">
+                <span>{{Vocabulary}}</span>
+                <p class="highlight">{{first:Readings}}</p>
+                <p>{{rest:Readings}}</p>
+            </div>
+            <div class="info" id="info_meanings">
+                <p class="highlight">{{first:Meanings}}</p>
+                <p>{{rest:Meanings}}</p>
+                <p>{{usersynonyms}}</p>
+            </div>
+            <div class="info" id="info_sentence">
+                <a href="http://ejje.weblio.jp/sentence/content/{{Vocabulary}}"><i class="isax isax-link-1"></i></a>
+                <p>
+                    {{furigana:Sentence}}
+                    <br>
+                    <span class="blur">{{Sentence Translation}}</span>
+                </p>
+            </div>
+            <div class="info" id="info_notes">
+                <div>
+                    <div class="notes">
+                        <p>{{Notes}}</p>
+                        <p>{{usernotes}}</p>
+                    </div>
+                    {{#Image}}<div id="info_image">{{Image}}</div>{{/Image}}
+                </div>
+            </div>
+            <div class="info" id="info_cardtags">
+                {{cardtags}}
+                <!-- <div class="cardtag">Test</div> -->
+                <!-- <div class="cardtag">Test2</div> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
